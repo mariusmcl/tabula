@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabula Blockchain</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⛓️ Tabula Blockchain</h1>
+            <p class="subtitle">A decentralized blockchain built with Rust & Tauri</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="blockCount">0</div>
+                <div class="stat-label">Total Blocks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="difficulty">2</div>
+                <div class="stat-label">Difficulty</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="validStatus">✅</div>
+                <div class="stat-label">Chain Status</div>
+            </div>
+        </div>
+
+        <div class="action-section">
+            <h2>Add New Block</h2>
+            <div class="add-block-form">
+                <input 
+                    type="text" 
+                    id="blockData" 
+                    placeholder="Enter block data..." 
+                    maxlength="100"
+                />
+                <button id="addBlockBtn" class="btn btn-primary">
+                    <span class="btn-text">Mine Block</span>
+                    <span class="btn-icon">⛏️</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="blockchain-section">
+            <div class="section-header">
+                <h2>Blockchain</h2>
+                <button id="refreshBtn" class="btn btn-secondary">
+                    <span class="btn-icon">🔄</span>
+                </button>
+            </div>
+            <div id="blockchain" class="blockchain-container"></div>
+        </div>
+
+        <div id="miningModal" class="modal">
+            <div class="modal-content">
+                <div class="loader"></div>
+                <p>Mining block...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>
+
