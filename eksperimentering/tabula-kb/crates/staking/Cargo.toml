@@ -1,0 +1,12 @@
+[package]
+name = "staking"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+types = { path = "../types" }
+subreddit = { path = "../subreddit" }
+store = { path = "../store" }
+crypto = { path = "../crypto" }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"

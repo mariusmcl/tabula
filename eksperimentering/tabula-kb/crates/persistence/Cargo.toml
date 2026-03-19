@@ -1,0 +1,11 @@
+[package]
+name = "persistence"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+types = { path = "../types" }
+store = { path = "../store" }
+subreddit = { path = "../subreddit" }
+sled = "0.34"
+thiserror = "1.0"

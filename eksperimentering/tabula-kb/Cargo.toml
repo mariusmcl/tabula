@@ -1,0 +1,33 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/units",
+    "crates/entity",
+    "crates/store",
+    "crates/eval",
+    "crates/ingest",
+    "crates/query",
+    "crates/contracts",
+    "crates/vm",
+    "crates/node",
+    # Blockchain crates
+    "crates/types",
+    "crates/crypto",
+    "crates/consensus",
+    "crates/mempool",
+    "crates/chain",
+    "crates/persistence",
+    "crates/network",
+    "crates/subreddit",
+]
+
+[workspace.dependencies]
+sha2 = "0.10"
+thiserror = "1.0"
+ed25519-dalek = { version = "2.1", features = ["rand_core"] }
+rand = "0.8"
+tokio = { version = "1", features = ["full"] }
+sled = "0.34"
+clap = { version = "4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"

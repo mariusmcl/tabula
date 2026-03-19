@@ -1,0 +1,315 @@
+:root {
+  font-family: "SF Pro Text", "SF Pro Display", -apple-system, "Helvetica Neue",
+    sans-serif;
+  color: var(--text-primary);
+  background-color: transparent;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  color-scheme: light dark;
+
+  --ui-font-family: "SF Pro Text", "SF Pro Display", -apple-system, "Helvetica Neue",
+    sans-serif;
+  --code-font-family: "SF Mono", "SFMono-Regular", Menlo, Monaco, monospace;
+  --code-font-size: 11px;
+
+  /* Text colors */
+  --text-primary: #e6e7ea;
+  --text-strong: #ffffff;
+  --text-emphasis: rgba(255, 255, 255, 0.9);
+  --text-stronger: rgba(255, 255, 255, 0.85);
+  --text-quiet: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --text-subtle: rgba(255, 255, 255, 0.6);
+  --text-faint: rgba(255, 255, 255, 0.5);
+  --text-fainter: rgba(255, 255, 255, 0.45);
+  --text-dim: rgba(255, 255, 255, 0.35);
+
+  /* Surface colors */
+  --surface-sidebar: rgba(18, 18, 18, 0.5);
+  --surface-sidebar-opaque: rgb(18, 18, 18);
+  --surface-topbar: rgba(10, 14, 20, 0.55);
+  --surface-main: rgba(8, 10, 16, 0.3);
+  --surface-card: rgba(255, 255, 255, 0.07);
+  --surface-card-strong: rgba(255, 255, 255, 0.14);
+  --surface-card-muted: rgba(255, 255, 255, 0.08);
+  --surface-item: rgba(255, 255, 255, 0.02);
+  --surface-control: rgba(255, 255, 255, 0.08);
+  --surface-control-hover: rgba(255, 255, 255, 0.14);
+  --surface-control-disabled: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --surface-active: rgba(100, 200, 255, 0.14);
+  --surface-popover: rgba(10, 14, 20, 0.995);
+  --surface-glass: rgba(12, 16, 26, 0.6);
+  --surface-overlay: rgba(6, 8, 12, 0.55);
+
+  /* Border colors */
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --border-muted: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-stronger: rgba(255, 255, 255, 0.22);
+  --border-quiet: rgba(255, 255, 255, 0.2);
+  --border-accent: rgba(100, 200, 255, 0.6);
+  --border-accent-soft: rgba(100, 200, 255, 0.3);
+
+  /* Status colors */
+  --status-success: rgba(120, 235, 190, 0.95);
+  --status-warning: rgba(255, 175, 85, 0.95);
+  --status-error: rgba(255, 110, 110, 0.95);
+  --status-unknown: rgba(255, 255, 255, 0.3);
+
+  /* Accent colors */
+  --text-accent: rgba(164, 195, 255, 0.7);
+  --shadow-accent: rgba(92, 168, 255, 0.28);
+
+  /* Blockchain-specific colors */
+  --block-genesis: #ffd700;
+  --block-genesis-bg: rgba(255, 215, 0, 0.15);
+  --block-valid: var(--status-success);
+  --block-invalid: var(--status-error);
+  --mining-active: rgba(100, 200, 255, 0.8);
+  --mining-progress: linear-gradient(135deg, #62b7ff, #4fe3a3);
+  --hashrate-high: var(--status-success);
+  --hashrate-medium: var(--status-warning);
+  --hashrate-low: var(--status-error);
+  --node-connected: var(--status-success);
+  --node-disconnected: var(--status-error);
+  --node-syncing: var(--status-warning);
+
+  /* Layout variables */
+  --sidebar-width: 280px;
+  --topbar-height: 56px;
+  --content-max-width: 1400px;
+  --card-border-radius: 12px;
+  --button-border-radius: 10px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --text-primary: #1a1d24;
+  --text-strong: #0e1118;
+  --text-emphasis: rgba(17, 20, 28, 0.9);
+  --text-stronger: rgba(17, 20, 28, 0.85);
+  --text-quiet: rgba(17, 20, 28, 0.75);
+  --text-muted: rgba(17, 20, 28, 0.7);
+  --text-subtle: rgba(17, 20, 28, 0.6);
+  --text-faint: rgba(17, 20, 28, 0.5);
+  --text-fainter: rgba(17, 20, 28, 0.45);
+  --text-dim: rgba(17, 20, 28, 0.35);
+
+  --surface-sidebar: rgba(246, 247, 250, 0.82);
+  --surface-sidebar-opaque: rgb(246, 247, 250);
+  --surface-topbar: rgba(250, 251, 253, 0.9);
+  --surface-main: rgba(238, 241, 246, 0.9);
+  --surface-card: rgba(255, 255, 255, 0.72);
+  --surface-card-strong: rgba(255, 255, 255, 0.92);
+  --surface-card-muted: rgba(255, 255, 255, 0.7);
+  --surface-control: rgba(15, 23, 36, 0.08);
+  --surface-control-hover: rgba(15, 23, 36, 0.12);
+  --surface-control-disabled: rgba(15, 23, 36, 0.05);
+  --surface-hover: rgba(15, 23, 36, 0.06);
+  --surface-active: rgba(77, 153, 255, 0.18);
+  --surface-popover: rgba(255, 255, 255, 0.99);
+  --surface-glass: rgba(246, 248, 252, 0.6);
+  --surface-overlay: rgba(240, 242, 250, 0.55);
+
+  --border-subtle: rgba(15, 23, 36, 0.08);
+  --border-muted: rgba(15, 23, 36, 0.06);
+  --border-strong: rgba(15, 23, 36, 0.14);
+  --border-stronger: rgba(15, 23, 36, 0.18);
+  --border-quiet: rgba(15, 23, 36, 0.2);
+  --border-accent: rgba(77, 153, 255, 0.5);
+  --border-accent-soft: rgba(77, 153, 255, 0.28);
+
+  --text-accent: rgba(45, 93, 170, 0.7);
+  --shadow-accent: rgba(90, 140, 210, 0.18);
+
+  --status-success: rgba(30, 155, 110, 0.9);
+  --status-warning: rgba(215, 120, 20, 0.9);
+  --status-error: rgba(200, 45, 45, 0.9);
+  --status-unknown: rgba(17, 20, 28, 0.25);
+
+  --block-genesis-bg: rgba(255, 215, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Third accent orb — purple/pink glow center-left */
+#root::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 40%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(160, 100, 255, 0.12) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Reduced transparency mode for accessibility */
+.app.reduced-transparency {
+  --surface-sidebar: rgba(18, 18, 18, 0.92);
+  --surface-topbar: rgba(10, 14, 20, 0.94);
+  --surface-main: rgba(8, 10, 16, 0.94);
+  --surface-card: rgba(30, 32, 40, 0.94);
+  --surface-card-strong: rgba(38, 40, 48, 0.96);
+  --surface-card-muted: rgba(24, 26, 34, 0.9);
+  --surface-control: rgba(40, 44, 55, 0.7);
+  --surface-control-hover: rgba(54, 60, 72, 0.8);
+  --surface-hover: rgba(46, 50, 62, 0.7);
+  --surface-glass: rgba(12, 16, 26, 0.92);
+}
+
+/* Popover surface with heavy shadow (matches CodexMonitor) */
+.popover-surface {
+  background: var(--surface-popover);
+  border: 1px solid var(--border-muted);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: var(--topbar-height) 1fr;
+  background: rgba(15, 20, 35, 0.82);
+  overflow: hidden;
+  position: relative;
+  font-family: var(--ui-font-family);
+}
+
+/* Decorative gradient orbs — these create the color that glass panels frost over */
+.app::before,
+.app::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app::before {
+  width: 700px;
+  height: 700px;
+  top: -180px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(98, 183, 255, 0.22) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.app::after {
+  width: 600px;
+  height: 600px;
+  bottom: -140px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(79, 227, 163, 0.18) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+/* All direct children of .app need to sit above the orbs */
+.app > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 100%;
+  }
+
+  .app {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-stronger);
+}
+
+/* Utility classes */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Shimmer loading skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.04) 8%,
+    rgba(255, 255, 255, 0.18) 18%,
+    rgba(255, 255, 255, 0.04) 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 999px;
+}

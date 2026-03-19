@@ -1,0 +1,9 @@
+[package]
+name = "mempool"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+types = { path = "../types" }
+crypto = { path = "../crypto" }
+thiserror = "1.0"

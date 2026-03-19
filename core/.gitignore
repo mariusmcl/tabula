@@ -1,6 +1,35 @@
+# Rust build artifacts
 /target
 Cargo.lock
 **/*.rs.bk
 *.pdb
-.DS_Store
 
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage

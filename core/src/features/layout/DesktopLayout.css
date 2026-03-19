@@ -1,0 +1,51 @@
+.desktop-layout {
+  display: grid;
+  grid-template-rows: var(--topbar-height) 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px 0 80px;
+  background: var(--surface-topbar);
+  border-bottom: 1px solid var(--border-subtle);
+  -webkit-app-region: drag;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.app.reduced-transparency .layout-topbar {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.layout-content {
+  overflow-y: auto;
+  padding: 24px;
+  background: var(--surface-main);
+}
+
+/* Scrollbar styling */
+.layout-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.layout-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.layout-content::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+.layout-content::-webkit-scrollbar-thumb:hover {
+  background: var(--border-stronger);
+}

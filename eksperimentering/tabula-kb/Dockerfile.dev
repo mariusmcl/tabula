@@ -1,0 +1,48 @@
+# Tabula KB — Full dev environment with Claude Code
+#
+# Build:
+#   docker build -f Dockerfile.dev -t tabula-dev .
+#
+# Run (interactive, for OAuth login):
+#   docker run -it --name tabula-dev -p 8001:8001 -p 8002:8002 -p 8003:8003 tabula-dev
+#
+# Then inside the container:
+#   claude    # OAuth login on first run, then go wild
+#
+# Re-attach later:
+#   docker start -ai tabula-dev
+
+FROM rust:1.85-bookworm
+
+# System deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl git build-essential pkg-config \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Node.js 22 (for Claude Code)
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Claude Code CLI
+RUN npm install -g @anthropic-ai/claude-code
+
+# Copy the full project
+WORKDIR /workspace
+COPY . .
+
+# Pre-build so Claude doesn't have to wait
+RUN cargo build --release -p node && cargo test --workspace --no-run
+
+# Persist Claude auth and data across restarts
+VOLUME /root/.claude
+VOLUME /workspace/local-testnet
+
+# Expose API ports for 3 nodes
+EXPOSE 8001 8002 8003
+
+ENV RUST_LOG=info
+
+WORKDIR /workspace
+CMD ["bash"]

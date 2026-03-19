@@ -1,0 +1,13 @@
+[package]
+name = "contracts"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+vm = { path = "../vm" }
+store = { path = "../store" }
+entity = { path = "../entity" }
+units = { path = "../units" }
+eval = { path = "../eval" }
+ingest = { path = "../ingest" }
+query = { path = "../query" }

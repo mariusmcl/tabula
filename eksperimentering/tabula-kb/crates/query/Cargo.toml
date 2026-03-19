@@ -1,0 +1,10 @@
+[package]
+name = "query"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+entity = { path = "../entity" }
+eval = { path = "../eval" }
+units = { path = "../units" }
+store = { path = "../store" }

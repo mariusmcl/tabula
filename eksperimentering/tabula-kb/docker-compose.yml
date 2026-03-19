@@ -1,0 +1,113 @@
+# Tabula 3-Node Local Network
+#
+# Usage:
+#   docker compose up --build          # Build and start
+#   docker compose up -d               # Start in background
+#   docker compose logs -f             # Follow logs
+#   docker compose down -v             # Stop and wipe data
+#
+# APIs:
+#   Node 1 (genesis + mining): http://localhost:8001/api/status
+#   Node 2 (sync only):        http://localhost:8002/api/status
+#   Node 3 (mining):           http://localhost:8003/api/status
+#
+# Quick test:
+#   curl http://localhost:8001/api/status | python3 -m json.tool
+#   curl -X POST http://localhost:8001/api/query \
+#     -H 'Content-Type: application/json' \
+#     -d '{"query": "food:\"Salad\".EnergyPerServing"}'
+
+services:
+  # Node 1: Genesis node with mining and KB seed data
+  node1:
+    build: .
+    container_name: tabula-node1
+    command:
+      - --data-dir
+      - /data
+      - --port
+      - "9000"
+      - --api-port
+      - "8080"
+      - --mine
+      - --key-seed
+      - "node1"
+      - --genesis
+      - --seed-genesis
+    ports:
+      - "8001:8080"
+      - "9001:9000"
+    volumes:
+      - node1-data:/data
+    environment:
+      - RUST_LOG=info
+    networks:
+      - tabula-net
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8080/api/status"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  # Node 2: Sync-only node (no mining)
+  node2:
+    build: .
+    container_name: tabula-node2
+    command:
+      - --data-dir
+      - /data
+      - --port
+      - "9000"
+      - --api-port
+      - "8080"
+      - --key-seed
+      - "node2"
+    ports:
+      - "8002:8080"
+      - "9002:9000"
+    volumes:
+      - node2-data:/data
+    environment:
+      - RUST_LOG=info
+    networks:
+      - tabula-net
+    depends_on:
+      node1:
+        condition: service_healthy
+
+  # Node 3: Mining node
+  node3:
+    build: .
+    container_name: tabula-node3
+    command:
+      - --data-dir
+      - /data
+      - --port
+      - "9000"
+      - --api-port
+      - "8080"
+      - --mine
+      - --key-seed
+      - "node3"
+    ports:
+      - "8003:8080"
+      - "9003:9000"
+    volumes:
+      - node3-data:/data
+    environment:
+      - RUST_LOG=info
+    networks:
+      - tabula-net
+    depends_on:
+      node1:
+        condition: service_healthy
+
+volumes:
+  node1-data:
+  node2-data:
+  node3-data:
+
+networks:
+  tabula-net:
+    driver: bridge
